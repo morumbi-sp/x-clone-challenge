@@ -1,8 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Open_Sans, Noto_Sans } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] });
+const openSans = Open_Sans({ subsets: ['latin'] });
+export const notoSans = Noto_Sans({
+  subsets: ['latin'],
+  weight: ['400'],
+});
 
 export const metadata: Metadata = {
   title: 'X',
@@ -16,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={inter.className}>{children}</body>
+      <body className={openSans.className}>{children}</body>
     </html>
   );
 }
