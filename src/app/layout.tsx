@@ -2,10 +2,14 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Open_Sans, Noto_Sans } from 'next/font/google';
 
-const openSans = Open_Sans({ subsets: ['latin'] });
-export const notoSans = Noto_Sans({
+export const open = Open_Sans({
   subsets: ['latin'],
-  weight: ['400'],
+  variable: '--font-open',
+});
+export const noto = Noto_Sans({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400'],
+  variable: '--font-noto',
 });
 
 export const metadata: Metadata = {
@@ -20,7 +24,7 @@ export default function RootLayout(props: {
   console.log(props);
   return (
     <html lang='en'>
-      <body className={openSans.className}>
+      <body className={`${open.variable} ${noto.variable} font-open`}>
         {props.children}
         {props.auth}
       </body>

@@ -12,6 +12,10 @@ const config: Config = {
         point: '#1D9BF0',
         darkText: '#71767A',
       },
+      fontFamily: {
+        open: ['var(--font-open)'],
+        noto: ['var(--font-noto)'],
+      },
     },
   },
   plugins: [],
