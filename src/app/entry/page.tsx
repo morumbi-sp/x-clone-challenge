@@ -4,6 +4,8 @@ import Image from 'next/image';
 import googleIcon from '/public/googleIcon.png';
 import githubIcon from '/public/githubIcon.png';
 import { notoSans } from '@/app/layout';
+import Link from 'next/link';
+import AuthModal from '@/components/authModal';
 
 export const metadata: Metadata = {
   title: 'Login',
@@ -13,6 +15,7 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <div className='flex flex-col h-screen w-screen'>
+      <AuthModal />
       <div className='flex h-full items-center'>
         <section className='basis-1/2 flex justify-center'>
           <div className='text-[500px]'>𝕏</div>
@@ -53,10 +56,13 @@ export default function LoginPage() {
               <h4 className='text-[17px] font-[700]'>
                 Already have an account?
               </h4>
-              <BigButton className='text-point mt-5'>Sign in</BigButton>
+              {/* <BigButton className='text-point mt-5'> */}
+              <Link href='/entry/login'>Sign in</Link>
+              {/* </BigButton> */}
             </div>
           </div>
         </section>
+        a
       </div>
       <footer className='h-[72px] w-full px-[16px] py-[12px]'>
         <div className='gap-x-4 gap-y-1 text-[13px] text-darkText flex flex-wrap justify-center'>

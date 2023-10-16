@@ -13,14 +13,17 @@ export const metadata: Metadata = {
   description: 'Cloning X',
 };
 
-export default function RootLayout({
-  children,
-}: {
+export default function RootLayout(props: {
   children: React.ReactNode;
+  auth: React.ReactNode;
 }) {
+  console.log(props);
   return (
     <html lang='en'>
-      <body className={openSans.className}>{children}</body>
+      <body className={openSans.className}>
+        {props.children}
+        {props.auth}
+      </body>
     </html>
   );
 }
