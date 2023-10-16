@@ -8,24 +8,6 @@ import AuthInput from '@/components/authInput';
 export default function LoginPage() {
   return (
     <div className='flex flex-col h-screen w-screen'>
-      <AuthModal>
-        <div className='w-full flex justify-center'>
-          <div className='flex flex-col items-start w-[440px] h-fullpx]'>
-            <div className='text-[30px] font-bold py-4'>
-              Create your account
-            </div>
-            <div className='w-full space-y-6 mt-4'>
-              <AuthInput placeholder='Name' />
-              <AuthInput placeholder='Email' />
-              <AuthInput placeholder='Password' />
-              <AuthInput placeholder='Confirm Password' />
-            </div>
-            <BigButton className='bg-black text-white dark:bg-white dark:text-black mt-6 hover:bg-gray-800 h-[52px] text-[16px] mt-28'>
-              Next
-            </BigButton>
-          </div>
-        </div>
-      </AuthModal>
       <div className='flex h-full items-center'>
         <section className='basis-1/2 flex justify-center'>
           <svg viewBox='0 0 24 24' width={400} className='dark:fill-white'>
@@ -76,7 +58,6 @@ export default function LoginPage() {
             </div>
           </div>
         </section>
-        m
       </div>
       <footer className='h-[72px] w-full px-[16px] py-[12px]'>
         <div className='gap-x-4 gap-y-1 text-[13px] text-darkText flex flex-wrap justify-center'>
