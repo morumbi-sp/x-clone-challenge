@@ -16,6 +16,7 @@ export default function TextCreateAccountPage() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<createAccountForm>();
 
@@ -36,24 +37,28 @@ export default function TextCreateAccountPage() {
                 register={register}
                 title='name'
                 type='text'
+                watch={watch}
               />
               <AuthInput
                 placeholder='Email'
                 register={register}
                 title='email'
                 type='email'
+                watch={watch}
               />
               <AuthInput
                 placeholder='Password'
                 register={register}
                 title='password'
                 type='password'
+                watch={watch}
               />
               <AuthInput
                 placeholder='Confirm Password'
                 register={register}
                 title='confirmedPassword'
                 type='password'
+                watch={watch}
               />
             </div>
             <BigButton
