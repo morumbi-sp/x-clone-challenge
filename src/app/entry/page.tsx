@@ -15,10 +15,61 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <div className='flex flex-col h-screen w-screen'>
-      <AuthModal />
+      <AuthModal>
+        <div className='w-full flex justify-center'>
+          <div className='flex flex-col items-start w-[364px] h-[536px] px-[32px]'>
+            <div className='text-[31px] font-bold py-4'>Sign in to X</div>
+            <BigButton className='mt-2 hover:bg-gray-200 '>
+              <Image src={googleIcon} alt='google-icon' width={20} />
+              <span className={`${notoSans.className} ml-2 text-[14.5px]`}>
+                Sign in with Google
+              </span>
+            </BigButton>
+            <BigButton className='mt-6 hover:bg-gray-200'>
+              <Image src={githubIcon} alt='github-icon' width={20} />
+              <span className='ml-2'>Sign in with GitHub</span>
+            </BigButton>
+            <div className='inline-flex items-center justify-center w-full my-6'>
+              <hr className='bg-gray-200 w-full' />
+              <span className='absolute bg-white px-2 -translate-y-[1px] text-[17px] dark:bg-black font'>
+                or
+              </span>
+            </div>
+            <div className='w-full relative group'>
+              <input
+                type='text'
+                id='inputWindow'
+                className='border border-gray-300 w-full h-[56px] rounded-md peer pt-4 pl-[10px] focus:border-point focus:border-2 focus:outline-none ring-0'
+              />
+              <label
+                htmlFor='inputWindow'
+                className='transform transition-all absolute top-4 left-[10px] peer-focus:top-[6px] peer-focus:text-[13px] text-darkText peer-focus:text-point'
+              >
+                Phone, email, or username
+              </label>
+            </div>
+            <BigButton className='bg-black text-white dark:bg-white dark:text-black mt-6 hover:bg-gray-800'>
+              Next
+            </BigButton>
+            <BigButton className='dark:bg-black dark:text-white mt-6 hover:bg-gray-200'>
+              Forgot Password?
+            </BigButton>
+            <span className='text-[15px] mt-12'>
+              Don&apos;t have an account?{' '}
+              <a href='' className='text-point hover:underline'>
+                Sign up
+              </a>
+            </span>
+          </div>
+        </div>
+      </AuthModal>
       <div className='flex h-full items-center'>
         <section className='basis-1/2 flex justify-center'>
-          <div className='text-[500px]'>𝕏</div>
+          <svg viewBox='0 0 24 24' width={400} className='dark:fill-white'>
+            <g>
+              <path d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z'></path>
+            </g>
+          </svg>
         </section>
         <section className='flex flex-col h-[645px] p-[20px]'>
           <h1 className='text-[64px] font-[780] my-[48px]'>Happening now</h1>
@@ -62,7 +113,6 @@ export default function LoginPage() {
             </div>
           </div>
         </section>
-        a
       </div>
       <footer className='h-[72px] w-full px-[16px] py-[12px]'>
         <div className='gap-x-4 gap-y-1 text-[13px] text-darkText flex flex-wrap justify-center'>
