@@ -3,6 +3,8 @@
 import BigButton from '@/components/BigButton';
 import AuthInput from '@/components/authInput';
 import AuthModal from '@/components/authModal';
+import { auth } from '@/lib/firebase';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useForm } from 'react-hook-form';
 
 export interface createAccountForm {
@@ -18,11 +20,24 @@ export default function TextCreateAccountPage() {
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
-  } = useForm<createAccountForm>();
+  } = useForm<createAccountForm>({ mode: 'onBlur' });
 
-  const onSubmit = (data: createAccountForm) => {
-    console.log(isSubmitting);
-    console.log(data);
+  const onSubmit = async ({
+    name,
+    email,
+    password,
+    confirmedPassword,
+  }: createAccountForm) => {
+    try {
+      const credentials = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      await updateProfile(credentials.user, { displayName: name });
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -63,9 +78,9 @@ export default function TextCreateAccountPage() {
             </div>
             <BigButton
               type='submit'
-              className='bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 h-[52px] text-[16px] mt-28'
+              className='bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-300 h-[52px] text-[16px] mt-28'
             >
-              Next
+              {isSubmitting ? 'Creating' : 'Next'}
             </BigButton>
           </form>
         </div>
