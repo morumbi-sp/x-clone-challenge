@@ -10,6 +10,7 @@ import { register } from 'module';
 import { useForm } from 'react-hook-form';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
+import { useRouter } from 'next/navigation';
 
 interface LogInForm {
   email: string;
@@ -18,15 +19,16 @@ interface LogInForm {
 
 export default function SignInPage() {
   const { register, watch, handleSubmit } = useForm<LogInForm>();
+  const router = useRouter();
 
   const onSubmit = async ({ email, password }: LogInForm) => {
     await signInWithEmailAndPassword(auth, email, password);
-    console.log(auth.currentUser);
+    router.push('/');
   };
   return (
     <AuthModal>
       <div className='w-full flex justify-center'>
-        <div className='flex flex-col items-start w-[364px] h-[536px] px-[32px]'>
+        <div className='flex flex-col items-start w-[364px] h-full px-[32px]'>
           <div className='text-[31px] font-bold py-4'>Sign in to X</div>
           <BigButton className='mt-2 hover:bg-gray-200 '>
             <Image src={googleIcon} alt='google-icon' width={20} />
@@ -68,7 +70,7 @@ export default function SignInPage() {
           <BigButton className='dark:bg-black dark:text-white mt-6 hover:bg-gray-200'>
             Forgot Password?
           </BigButton>
-          <span className='text-[15px] mt-12'>
+          <span className='text-[15px] mt-5'>
             Don&apos;t have an account?{' '}
             <a href='' className='text-point hover:underline'>
               Sign up
