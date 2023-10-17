@@ -21,7 +21,6 @@ export default function RootLayout(props: {
   children: React.ReactNode;
   auth: React.ReactNode;
 }) {
-  console.log(props);
   return (
     <html lang='en'>
       <body className={`${open.variable} ${noto.variable} font-open`}>

@@ -2,8 +2,6 @@ import BigButton from '@/components/BigButton';
 import Image from 'next/image';
 import googleIcon from '/public/googleIcon.png';
 import githubIcon from '/public/githubIcon.png';
-import AuthModal from '@/components/authModal';
-import AuthInput from '@/components/authInput';
 
 export default function LoginPage() {
   return (
