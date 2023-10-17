@@ -6,8 +6,23 @@ import Image from 'next/image';
 import googleIcon from '/public/googleIcon.png';
 import githubIcon from '/public/githubIcon.png';
 import AuthInput from '@/components/authInput';
+import { register } from 'module';
+import { useForm } from 'react-hook-form';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+
+interface LogInForm {
+  email: string;
+  password: string;
+}
 
 export default function SignInPage() {
+  const { register, watch, handleSubmit } = useForm<LogInForm>();
+
+  const onSubmit = async ({ email, password }: LogInForm) => {
+    await signInWithEmailAndPassword(auth, email, password);
+    console.log(auth.currentUser);
+  };
   return (
     <AuthModal>
       <div className='w-full flex justify-center'>
@@ -29,10 +44,27 @@ export default function SignInPage() {
               or
             </span>
           </div>
-          <AuthInput placeholder='Phone, email, or username' />
-          <BigButton className='bg-black text-white dark:bg-white dark:text-black mt-6 hover:bg-gray-800'>
-            Next
-          </BigButton>
+          <form onSubmit={handleSubmit(onSubmit)} className='w-full'>
+            <AuthInput
+              placeholder='email'
+              register={register}
+              title='email'
+              watch={watch}
+            />
+            <AuthInput
+              placeholder='password'
+              register={register}
+              title='password'
+              watch={watch}
+              className='mt-4'
+            />
+            <BigButton
+              className='bg-black text-white dark:bg-white dark:text-black mt-6 hover:bg-gray-800'
+              type='submit'
+            >
+              Next
+            </BigButton>
+          </form>
           <BigButton className='dark:bg-black dark:text-white mt-6 hover:bg-gray-200'>
             Forgot Password?
           </BigButton>
