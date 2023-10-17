@@ -46,7 +46,10 @@ export default function LoginPage() {
                   or
                 </span>
               </div>
-              <BigButton className='bg-point text-white'>
+              <BigButton
+                href='/entry/create-account'
+                className='bg-point text-white'
+              >
                 Create account
               </BigButton>
               <span className='text-[10.5px]  text-darkText mt-2'>

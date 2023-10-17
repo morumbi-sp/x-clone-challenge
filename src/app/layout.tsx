@@ -14,17 +14,12 @@ export const noto = Noto_Sans({
   variable: '--font-noto',
 });
 
-export default function RootLayout(props: {
-  children: React.ReactNode;
-  auth: React.ReactNode;
-}) {
-  console.log(props);
+export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang='en'>
       <AuthProvider>
         <body className={`${open.variable} ${noto.variable} font-open`}>
           {props.children}
-          {props.auth}
         </body>
       </AuthProvider>
     </html>

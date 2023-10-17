@@ -1,19 +1,11 @@
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Entry page',
-  description: 'Cloning X',
-};
-
-export default function EntryLayout(props: {
+export default function Layout(props: {
   children: React.ReactNode;
   auth: React.ReactNode;
 }) {
-  console.log(props);
   return (
-    <>
+    <div>
       {props.children}
       {props.auth}
-    </>
+    </div>
   );
 }

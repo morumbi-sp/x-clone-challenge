@@ -1,6 +1,6 @@
 'use client';
 
-import { createAccountForm } from '@/app/entry/testauth/page';
+import { createAccountForm } from '@/app/entry/@auth/create-account/page';
 import { InputHTMLAttributes, useState } from 'react';
 import {
   FieldValues,
