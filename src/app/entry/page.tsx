@@ -30,13 +30,13 @@ export default function LoginPage() {
           <h3 className='text-[30px] font-[780] mb-[30px]'>Join today.</h3>
           <div className='flex flex-col justify-between h-full w-[307px]'>
             <div className='flex flex-col items-start'>
-              <BigButton>
+              <BigButton serviceProvider='google'>
                 <Image src={googleIcon} alt='google-icon' width={20} />
                 <span className={`font-noto font-[400] ml-2 text-[15px]`}>
                   Sign up with Google
                 </span>
               </BigButton>
-              <BigButton className='mt-3'>
+              <BigButton serviceProvider='github' className='mt-3'>
                 <Image src={githubIcon} alt='github-icon' width={20} />
                 <span className='ml-2'>Sign up with GitHub</span>
               </BigButton>
