@@ -1,11 +1,20 @@
+'use client';
 import BigButton from '@/components/BigButton';
 import Image from 'next/image';
 import googleIcon from '/public/googleIcon.png';
 import githubIcon from '/public/githubIcon.png';
 import AuthModal from '@/components/authModal';
 import AuthInput from '@/components/authInput';
+import { useAuth } from '@/context/AuthContext';
 
 export default function LoginPage() {
+  const { user, loading } = useAuth();
+
+  if (loading) {
+    return <div>loading...</div>;
+  }
+
+  console.log(user);
   return (
     <div className='flex flex-col h-screen w-screen'>
       <div className='flex h-full items-center'>

@@ -1,3 +1,5 @@
+'use client';
+import { AuthProvider } from '@/context/AuthContext';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Open_Sans, Noto_Sans } from 'next/font/google';
@@ -12,11 +14,6 @@ export const noto = Noto_Sans({
   variable: '--font-noto',
 });
 
-export const metadata: Metadata = {
-  title: 'X',
-  description: 'Cloning X',
-};
-
 export default function RootLayout(props: {
   children: React.ReactNode;
   auth: React.ReactNode;
@@ -24,10 +21,12 @@ export default function RootLayout(props: {
   console.log(props);
   return (
     <html lang='en'>
-      <body className={`${open.variable} ${noto.variable} font-open`}>
-        {props.children}
-        {props.auth}
-      </body>
+      <AuthProvider>
+        <body className={`${open.variable} ${noto.variable} font-open`}>
+          {props.children}
+          {props.auth}
+        </body>
+      </AuthProvider>
     </html>
   );
 }

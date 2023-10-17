@@ -2,23 +2,29 @@
 
 import { createAccountForm } from '@/app/entry/testauth/page';
 import { InputHTMLAttributes, useState } from 'react';
-import { UseFormRegister, UseFormWatch } from 'react-hook-form';
+import {
+  FieldValues,
+  Path,
+  UseFormRegister,
+  UseFormWatch,
+} from 'react-hook-form';
 
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+interface Props<T extends FieldValues>
+  extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   className?: string;
-  register: UseFormRegister<createAccountForm>;
-  title: keyof createAccountForm;
-  watch: UseFormWatch<createAccountForm>;
+  register: UseFormRegister<T>;
+  title: Path<T>; //Path === keyof
+  watch: UseFormWatch<T>;
 }
-export default function AuthInput({
+export default function AuthInput<T extends FieldValues>({
   placeholder,
   className,
   register,
   title,
   type,
   watch,
-}: Props) {
+}: Props<T>) {
   const [isFocused, setIsFocused] = useState(false);
   const inputValue = watch(title);
   const handleFocus = () => {
